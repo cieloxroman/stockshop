@@ -3,10 +3,33 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+      function submitform(){
+        alert("Review submitted. We care about your input, so thank you.");
+        document.getElementById("myform").reset();
+      }
+    </script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p> this is my second!!! web application -Dude i like it!</p>
+    <div class="banner" ><h1 style="text-align:center; font-size:50px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#800000"><b>
+      <a href="/" style=" font-size:50px" >StockShop</a></b></h1></div>
+    <div class="contactheader"><h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic">Contact Us</h1></div>
+    <div class="messagebox">
+      <h1 style="text-align:left; padding:10px; font-size:20px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009">Send Us A Direct Review</h1>
+      <form id="myform" style="padding:10px">
+        <textarea name="message" id="message" rows="10" maxlength="1500"></textarea>
+      </form>
+      <button onclick="submitform()">Submit Review</button>
+      
+    </div>
+    <div class="socials" style="text-align:center">
+      <h1 style="text-align:center; font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic">Socials</h1>
+      <a href="mailto:croman12@depaul.edu" target="_blank">Email</a>
+      <br>
+      <br>
+      <br>
+      <a href="https://www.instagram.com/10ading.err0r" target="_blank">Insta</a>
+    </div>
+    <div class="banner" style="top:85%"></div>
   </body>
 </html>
