@@ -1,11 +1,22 @@
 <body>
   <h1 style="text-align:center; font-size:30px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic">Let's Be Resourceful.</h1>
-  <div class="descrip"><h1 style="font-size:25px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009">&emsp;&emsp;This is StockShops' main website. 
-    This website allows you to contact us or learn more about our company. Products and services will be added to the site soon!</h1></div>
-  <!--=
-  <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p>
-  <p> this is my first web application -Dude i like it!</p>
-  <a href="/contact"><li>Login</li></a>
-  -->
-</body>
+  <h1 style="font-size:25px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009">&emsp;&emsp;This is StockShops' main website. 
+    This website allows you to contact us or learn more about our company. Products and services will be added to the site soon!</h1>
+<hr/>
+
+  </body>
+  <% if (allrecs.length > 0) {%>
+    <% allrecs.forEach((recref, index) => { %>
+    <product>
+    <table style="border:none; text-align: left;"> 
+        <tr><th>Product ID</th><td><%= recref.product_id %></td></tr>
+        <tr><th>Product Name</th><td><%= recref.productname %></td></tr>
+        <tr><th>Image</th><td colspan="2"><%= recref.prodimage %></td></tr>
+        <tr><th>Description</th><td colspan="2"><%= recref.description %></td></tr>
+        <tr><th>Cost Per Ounce</th><td><%= recref.cost_per_ounce %></td></tr>
+        <tr><th>Catagory</th><td><%= recref.catagory %></td></tr>
+        <tr><td><a style="text-decoration: underline" href='/product/<%= recref.product_id %>/show'>Details</a></td></tr>
+    </table>
+    </product>
+    <% }); %>
+    <% } %>

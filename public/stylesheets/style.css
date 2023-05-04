@@ -35,9 +35,9 @@ a {
 a{
   color:#800000;
   text-decoration: none;
-  font-size:25px;
+  font-size:15px;
   background-color:#FFE4C4;
-  padding:5px;
+  padding:2px;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   text-align: center;
@@ -49,11 +49,7 @@ a:hover{
 }
 .descrip{
   position:absolute;
-  top:45%;
-  left:6%;
-  width:90%;
-  height:40%;
-
+ 
 }
 .contactheader{
   position:absolute;
@@ -106,6 +102,7 @@ ul {
  }
  li {
   float: left;
+  text-decoration: none;
  }
  li a {
   display: block;
@@ -140,8 +137,21 @@ ul {
   box-shadow: 5px 5px 2px #FFE4C4;
   min-width: 200px;
   max-width: 200px;
-  min-height: 250px;
-  max-height: 250px;
-   border-radius: 5px;
-   padding: 5px;
+  min-height: 350px;
+  max-height: 350px;
+  border-radius: 5px;
+  padding: 5px;
+  overflow: auto;
+  }
+  th{
+    color:#513009;
+    font-family:Verdana;
+    font-size:15px;
+    padding:5px;
+  }
+  td{
+    padding:5px;
+  }
+  table{
+    border:#800000 2px solid;
   }

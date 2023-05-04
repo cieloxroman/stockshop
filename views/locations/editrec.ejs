@@ -1,0 +1,10 @@
+<h1> Edit Location Info</h1>
+<form action="/locations/save" method="post">
+<input type="hidden" name="location_id" value="<%= onerec.location_id %>" >
+<table>
+<tr> <td> Address: </td> <td> <input type="text" name="address" value="<%= onerec.address %>" required> </td> </tr>
+<tr> <td> Number of Employees: </td> <td> <input type="number" name="number_of_employees" value="<%= onerec.number_of_employees %>" required> </td> </tr>
+<tr> <td> Yearly Revenue: </td> <td> <input type="number" step="any" name="yearly_revenue" value="<%= onerec.yearly_revenue %>" required> </td> </tr>
+</table>
+<button type="submit">Save</button>
+</form>

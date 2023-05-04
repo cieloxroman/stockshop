@@ -1,0 +1,12 @@
+<h1> Edit Employee Info</h1>
+<form action="/employees/save" method="post">
+<input type="hidden" name="employee_id" value="<%= onerec.employee_id %>" >
+<table>
+<tr> <td> First Name: </td> <td> <input type="text" name="firstname" value="<%= onerec.firstname %>" required> </td> </tr>
+<tr> <td> Last Name: </td> <td> <input type="text" name="lastname" value="<%= onerec.lastname %>" required> </td> </tr>
+<tr> <td> Salary Per Hour: </td> <td> <input type="number" step="any" name="pay" value="<%= onerec.pay %>" required> </td> </tr>
+<tr><td>Start Date: </td><td><input type=date name="start_date" value="<%= onerec.start_date %>" required></td></tr>
+<tr> <td> Location ID: </td> <td> <input type="number" name="location_id" value="<%= onerec.location_id %>" required> </td> </tr>
+</table>
+<button type="submit">Save</button>
+</form>

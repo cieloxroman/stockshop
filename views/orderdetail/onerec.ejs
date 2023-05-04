@@ -1,0 +1,13 @@
+<h1> Sale Order Details </h1>
+<% if (onerec) {%>
+<table>
+<tr> <td> Order Detail ID: </td> <td> <%= onerec.orderdetail_id %> </td> </tr>
+<tr> <td> Order ID: </td> <td> <%= onerec.order_id %> </td> </tr>
+<tr> <td> Product ID: </td> <td> <%= onerec.product_id %> </td> </tr>
+<tr> <td> Sale Price: </td> <td> $<%= onerec.saleprice %> </td> </tr>
+<tr> <td> Container Size In Ounces: </td> <td> <%= onerec.container_size_in_ounces %> </td> </tr>
+<tr> <td> Employee ID: </td> <td> <%= onerec.employee_id %> </td> </tr>
+</table>
+<% } else { %>
+    <p>No Record To Display</p>
+<% } %>

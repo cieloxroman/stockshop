@@ -1,0 +1,12 @@
+<h1> Employee Details </h1>
+<% if (onerec) {%>
+<table>
+<tr> <td> First Name: </td> <td> <%= onerec.firstname %> </td> </tr>
+<tr> <td> Last Name: </td> <td> <%= onerec.lastname %> </td> </tr>
+<tr> <td> Start Date: </td> <td> <%= onerec.start_date %> </td> </tr>
+<tr> <td> Salary Per Hour: </td> <td>$<%= onerec.pay %> </td> </tr>
+<tr> <td> Location ID: </td> <td> <%= onerec.location_id %> </td> </tr>
+</table>
+<% } else { %>
+    <p>No Record To Display</p>
+<% } %>

@@ -1,0 +1,21 @@
+<h1> New Product</h1>
+<form action="/product" method="post">
+<table>
+<tr> <td> Product Name: </td> <td> <input type="text" name="productname" required> </td> </tr>
+<tr> <td> Image: </td> <td> <input type="text" name="prodimage" required> </td> </tr>
+<tr> <td> Description: </td> <td> <textarea name="description" rows="10" cols="30" placeholder="Description"></textarea> </td> </tr>
+<tr> <td> Supplier: </td> <td> <input type="number" name="supplier_id" required> </td> </tr>
+<tr> <td> Cost Per Ounce: </td> <td> <input type="number" step="any" name="cost_per_ounce" required> </td> </tr>
+<tr> <td> Catagory: </td> <td> <select name="catagory" required>
+<option selected disabled>Choose Catagory</option>
+<option>Snacks</option>
+<option>Beverage</option>
+<option>Cleaning Products</option>
+<option>Skin Care</option>
+</select> </td> </tr>
+<tr> <td> Total liters in storage: </td> <td> <input type="number" step="any" name="total_liters_in_storage" required>
+<tr> <td> Homepage: </td> <td> <input type="checkbox" name="homepage" required>
+
+</table>
+<button type="submit">Save</button>
+</form>

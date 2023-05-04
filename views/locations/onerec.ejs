@@ -1,0 +1,11 @@
+<h1> Location Details </h1>
+<% if (onerec) {%>
+<table>
+<tr> <td> Address: </td> <td> <%= onerec.address %> </td> </tr>
+<tr> <td> Number Of Employees: </td> <td> <%= onerec.number_of_employees %> </td> </tr>
+<tr> <td> Yearly Revenue: </td> <td> <%= onerec.yearly_revenue %> </td> </tr>
+<tr> <td> Location ID: </td> <td> <%= onerec.location_id %> </td> </tr>
+</table>
+<% } else { %>
+    <p>No Record To Display</p>
+<% } %>

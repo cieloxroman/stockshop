@@ -4,11 +4,41 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var layouts=require('express-ejs-layouts');
+var dotenv = require('dotenv');
+
+//establishing connectivity
+dotenv.config();
+const mariadb = require('mariadb/callback'); //calling new package and asking for the package to be part of our application
+const db = mariadb.createConnection({host: process.env.DB_HOST,
+user: process.env.DB_USER, 
+password: process.env.DB_PASSWORD, 
+database: process.env.DB_DATABASE,
+port: process.env.DB_PORT});
+// now after this build above connect to database
+db.connect((err) => {
+if (err) {
+console.log("Unable to connect to database due to error: " + err);
+} else {
+console.log("Connected to DB");
+}
+});
+global.db=db;//all connections are recognized under db
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var contactRouter = require('./routes/contact');
 var aboutRouter = require('./routes/about');
+var helpRouter=require('./routes/help');
+var privacyRouter=require('./routes/privacy');
+var productRouter=require('./routes/product');
+var customerRoute=require('./routes/customer');
+var employeeRoute=require('./routes/employees');
+var locationRouter=require('./routes/locations');
+var saleorderRouter=require('./routes/saleorder');
+var orderdetailRouter=require('./routes/orderdetail');
+var supplierRoute=require('./routes/supplier');
+var reviewRoute=require('./routes/review');
+var policiesRoute=require('./routes/policies');
 
 var app = express();
 
@@ -27,6 +57,18 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/contact', contactRouter);
 app.use('/about', aboutRouter);
+app.use('/help',helpRouter);
+app.use('/privacy',privacyRouter);
+app.use('/product',productRouter);
+app.use('/customer', customerRoute);
+app.use('/employees', employeeRoute);
+app.use('/locations',locationRouter);
+app.use('/saleorder', saleorderRouter);
+app.use('/orderdetail', orderdetailRouter);
+app.use('/supplier', supplierRoute);
+app.use('/review', reviewRoute);
+app.use('/policies', policiesRoute);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

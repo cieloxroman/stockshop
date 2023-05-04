@@ -1,0 +1,17 @@
+<h1> Edit Sale Order Info</h1>
+<form action="/saleorder/save" method="post">
+<input type="hidden" name="order_id" value="<%= onerec.order_id %>" >
+<table>
+<tr> <td> Customer ID: </td> <td> <input type="number" name="customer_id" value="<%= onerec.customer_id %>" required> </td> </tr>
+<tr> <td> Sale Date: </td> <td> <input type="date" name="saledate" value="<%= onerec.saledate %>" required> </td> </tr>
+<tr> <td> Payment Status: </td> <td> <select name="paymentstatus" required>
+    <option selected><%= onerec.paymentstatus %></option>
+    <option>Complete</option>
+    <option>Pending</option>
+    <option>Declined</option>
+    <option>In Cart</option>
+    </select> </td> </tr>
+<tr> <td> Authorization Number: </td> <td> <input type="number" name="authorizationnum" value="<%= onerec.authorizationnum %>" required> </td> </tr>
+</table>
+<button type="submit">Save</button>
+</form>
