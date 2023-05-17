@@ -39,6 +39,9 @@ var orderdetailRouter=require('./routes/orderdetail');
 var supplierRoute=require('./routes/supplier');
 var reviewRoute=require('./routes/review');
 var policiesRoute=require('./routes/policies');
+var searchRoute=require('./routes/search');
+var promotionRouter=require('./routes/promotion');
+var reportRouter = require("./routes/report");
 
 var app = express();
 
@@ -68,7 +71,9 @@ app.use('/orderdetail', orderdetailRouter);
 app.use('/supplier', supplierRoute);
 app.use('/review', reviewRoute);
 app.use('/policies', policiesRoute);
-
+app.use('/search', searchRoute);
+app.use('/promotion', promotionRouter);
+app.use('/report', reportRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

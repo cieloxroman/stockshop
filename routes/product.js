@@ -5,7 +5,7 @@ var router = express.Router();
 // url: http://localhost:3028/product/
 // ==================================================
 router.get('/', function(req, res, next) {
-let query = "SELECT product_id, productname, prodimage, description, cost_per_ounce, catagory, homepage FROM product"; 
+let query = "SELECT product_id, productname, prodimage, description, supplier_id, cost_per_ounce, catagory, homepage FROM product"; 
 // execute query
 db.query(query, (err, result) => {
 if (err) {
@@ -35,8 +35,16 @@ router.get('/:recordid/show', function(req, res, next) {
 // Route to show empty form to obtain input form end-user.
 // ==================================================
 router.get('/addrecord', function(req, res, next) {
-    res.render('product/addrec');
+    let query = "SELECT supplier_id, suppliername FROM supplier"; 
+// execute query
+    db.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.render('error');
+        }
+        res.render('product/addrec', {supplier: result});
     });
+});
 // ==================================================
 // Route to obtain user input and save in database.
 // ==================================================
@@ -65,11 +73,19 @@ router.get('/:recordid/edit', function(req, res, next) {
     let query = "SELECT product_id, productname, prodimage, description, supplier_id, cost_per_ounce, total_liters_in_storage, catagory, homepage FROM product WHERE product_id = " + req.params.recordid; 
     // execute query
     db.query(query, (err, result) => {
-    if (err) {
-    console.log(err);
-    res.render('error');
+        if (err) {
+        console.log(err);
+        res.render('error');
     } else {
-    res.render('product/editrec', {onerec: result[0] });
+        let query = "SELECT supplier_id, suppliername FROM supplier"; 
+        // execute query
+            db.query(query, (err, suppliers) => {
+                if (err) {
+                    console.log(err);
+                    res.render('error');
+                }
+                res.render('product/editrec', {onerec: result[0], supplier: suppliers});
+            });
     } 
     });
     });

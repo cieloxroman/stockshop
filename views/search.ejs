@@ -1,0 +1,20 @@
+<body>
+  <h1 style="font-size:25px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009">Search Results</h1>
+<hr/>
+
+  </body>
+  <% if (allrecs.length > 0) {%>
+    <% allrecs.forEach((recref, index) => { %>
+    <product>
+    <table style="border:none; text-align: left;"> 
+        <tr><td><%= recref.supplier_id %></td></tr>
+        <tr><td colspan="2" align="center"><p style="font-size:20px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#800000"><b><%= recref.productname %></b></p></td></tr>
+        <tr><td colspan="2" style="text-align: center;"><img style="width:100px; height:100px; border:#800000 3px solid" src="/images/<%= recref.prodimage %>"></td></tr>
+        <tr><th>Description</th><td colspan="2"><%= recref.description %></td></tr>
+        <tr><th>Cost Per Ounce</th><td><%= recref.cost_per_ounce %></td></tr>
+        <tr><th>Catagory</th><td><%= recref.catagory %></td></tr>
+        <tr><td><a style="text-decoration: underline" href='/product/<%= recref.product_id %>/show'>Details</a></td></tr>
+    </table>
+    </product>
+    <% }); %>
+    <% } %>

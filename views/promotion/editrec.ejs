@@ -1,0 +1,13 @@
+<h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%"> Edit Promotion Info</h1>
+<form action="/promotion/save" method="post">
+<input type="hidden" name="promotion_id" value="<%= onerec.promotion_id %>" >
+<table>
+<tr> <td> Promotion Title: </td> <td> <input type="text" name="promotitle" value="<%= onerec.promotitle %>" required> </td> </tr>
+<tr> <td> Image Source: </td> <td> <input type="text" name="promoimage" value="<%= onerec.promoimage %>" required> </td> </tr>
+<tr> <td> Description: </td> <td> <textarea name="description" rows="10" cols="30"><%= onerec.description %></textarea> </td> </tr>
+<tr> <td> Start Date: </td> <td> <input type="date" name="startdate" value="<%= onerec.startdate.toISOString().split('T')[0] %>" required> </td> </tr>
+<tr> <td> End Date: </td> <td> <input type="date" name="enddate" value="<%= onerec.enddate.toISOString().split('T')[0] %>" required> </td> </tr>
+<tr> <td> Discount Rate: </td> <td> <input type="number" step="any" name="discountrate" value="<%= onerec.discountrate %>" required> </td> </tr>
+</table>
+<button type="submit">Save</button>
+</form>

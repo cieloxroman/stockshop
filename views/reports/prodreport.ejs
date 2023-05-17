@@ -1,0 +1,27 @@
+<h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%">Product Report</h1>
+<% if (allrecs.length > 0) {%>
+    <table border="1">
+    <tr>
+    <th>Product ID</th>
+    <th>Product Name</th>
+    <th>Product Description</th>
+    <th>Supplier</th>
+    <th>Cost Per Ounce</th>
+    <th>Catagory</th>
+    <th>Homepage</th>
+    </tr>
+    <% allrecs.forEach((recref, index)=> {%>
+    <tr>
+    <td><%= recref.product_id %></td>
+    <td><%= recref.productname %></td>
+    <td><%= recref.description %></td>
+    <td><%= recref.supplier_id %></td>
+    <td><%= recref.cost_per_ounce %></td>
+    <td><%= recref.catagory %></td>
+    <td><%= recref.homepage %></td>
+    </tr>
+    <% }); %>
+    </table>
+    <% } else { %>
+    <p>Not Records Available</p>
+    <% } %>

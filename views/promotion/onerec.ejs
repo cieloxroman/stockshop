@@ -1,0 +1,14 @@
+<h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%"> Promotion Details </h1>
+<% if (onerec) {%>
+<table>
+<tr> <td> Promotion ID: </td> <td> <%= onerec.promotion_id %> </td> </tr>
+<tr> <td> Promotion Title: </td> <td> <%= onerec.promotitle %> </td> </tr>
+<tr> <td> Promo Image: </td> <td> <img style="width:150px; height:150px" src="/images/<%= onerec.promoimage %>"> </td> </tr>
+<tr> <td> Description: </td> <td> <%= onerec.description %> </td> </tr>
+<tr> <td> Start Date: </td> <td> <%= onerec.startdate %> </td> </tr>
+<tr> <td> End Date: </td> <td> <%= onerec.enddate %> </td> </tr>
+<tr> <td> Discount Rate: </td> <td> <%= onerec.discountrate %> </td> </tr>
+</table>
+<% } else { %>
+    <p>No Record To Display</p>
+<% } %>

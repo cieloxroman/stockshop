@@ -1,0 +1,17 @@
+<h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%">Sales Report</h1>
+<% if (allrecs.length > 0) {%>
+    <table border="1">
+    <tr>
+    <th>Order ID</th>
+    <th>Customer ID</th>
+    </tr>
+    <% allrecs.forEach((recref, index)=> {%>
+    <tr>
+    <td><%= recref.order_id %></td>
+    <td><%= recref.customer_id %></td>
+    </tr>
+    <% }); %>
+    </table>
+    <% } else { %>
+    <p>Not Records Available</p>
+    <% } %>

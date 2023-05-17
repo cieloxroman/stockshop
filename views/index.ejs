@@ -1,17 +1,18 @@
 <body>
   <h1 style="text-align:center; font-size:30px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic">Let's Be Resourceful.</h1>
-  <h1 style="font-size:25px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009">&emsp;&emsp;This is StockShops' main website. 
-    This website allows you to contact us or learn more about our company. Products and services will be added to the site soon!</h1>
+  <h1 style="text-align: center; font-size:25px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009">This is StockShops' main website. 
+    We offer a more thoughtful way to shop!</h1>
 <hr/>
 
   </body>
+  <table width="100%" border="1" style="border-color:white"><tr valign="TOP"><td width="80%">
   <% if (allrecs.length > 0) {%>
     <% allrecs.forEach((recref, index) => { %>
     <product>
     <table style="border:none; text-align: left;"> 
-        <tr><th>Product ID</th><td><%= recref.product_id %></td></tr>
-        <tr><th>Product Name</th><td><%= recref.productname %></td></tr>
-        <tr><th>Image</th><td colspan="2"><%= recref.prodimage %></td></tr>
+        <tr><td><%= recref.supplier_id %></td></tr>
+        <tr><td colspan="2" align="center"><p style="font-size:20px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#800000"><b><%= recref.productname %></b></p></td></tr>
+        <tr><td colspan="2" style="text-align: center;"><img style="width:100px; height:100px; border:#800000 3px solid" src="/images/<%= recref.prodimage %>"></td></tr>
         <tr><th>Description</th><td colspan="2"><%= recref.description %></td></tr>
         <tr><th>Cost Per Ounce</th><td><%= recref.cost_per_ounce %></td></tr>
         <tr><th>Catagory</th><td><%= recref.catagory %></td></tr>
@@ -20,3 +21,18 @@
     </product>
     <% }); %>
     <% } %>
+  </td>
+  <td width="20%" style="text-align:center; padding:5px">
+    <h2 style="font-size:20px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#800000"> Current Promotions </h2>
+    <p style="font-size:20px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#800000"> <b>⇩⇩⇩⇩⇩⇩⇩⇩</b> </p>
+    <% if (promos.length > 0) {%>
+      <% promos.forEach((recref, index) => { %>
+          <h3 style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#FFE4C4"><%= recref.promotitle %></h3>   
+          <img style="padding:10px;width:200px; height:200px;" src="/images/<%= recref.promoimage %>">
+          <b><p Style="color: #513009;">From <%= recref.startdate.toDateString() %> <br>till <%= recref.enddate.toDateString() %></p></b>
+          <hr style="padding:3px; border-style:solid; border-color: #513009; background-color: #513009;">
+      <% }); %>
+    <% } %>
+  </td>
+  </tr>
+  </table>

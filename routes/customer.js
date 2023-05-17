@@ -5,15 +5,15 @@ var router = express.Router();
 // url: http://localhost:3028/customer/
 // ==================================================
 router.get('/', function(req, res, next) {
-let query = "SELECT customer_id, firstname, lastname FROM customer"; 
+    let query = "SELECT customer_id, firstname, lastname FROM customer"; 
 // execute query
 db.query(query, (err, result) => {
-if (err) {
-console.log(err);
-res.render('error');
-}
-res.render('customer/allrecords', {allrecs: result });
-});
+    if (err) {
+        console.log(err);
+        res.render('error');
+    }
+    res.render('customer/allrecords', {allrecs: result });
+    });
 });
 
 // ==================================================

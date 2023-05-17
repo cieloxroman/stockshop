@@ -1,3 +1,4 @@
+<h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%">Products</h1>
 <% if (allrecs.length > 0) {%>
     <table border="1">
     <tr>
@@ -16,7 +17,7 @@
     <td><%= recref.productname %></td>
     <td><%= recref.description %></td>
     <td><%= recref.supplier_id %></td>
-    <td><%= recref.cost_per_ounce %></td>
+    <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.cost_per_ounce) %></td>
     <td><%= recref.catagory %></td>
     <td><%= recref.homepage %></td>
     <td><a href='/product/<%= recref.product_id %>/show'> 

@@ -1,11 +1,21 @@
-<h1> New Employee Record</h1>
+<h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%"> New Employee Record</h1>
 <form action="/employees" method="post">
 <table>
 <tr> <td> Employee First Name: </td> <td> <input type="text" name="firstname" required> </td> </tr>
 <tr> <td> Employee Last Name: </td> <td> <input type="text" name="lastname" required> </td> </tr>
 <tr> <td> Start Date: </td> <td> <input type="date" name="start_date" required> </td> </tr>
 <tr> <td> Salary Per Hour: </td> <td> <input type="number" step="any" name="pay" required> </td> </tr>
-<tr> <td> Location ID: </td> <td> <input type="number" name="location_id" required> </td> </tr>
+<tr> <td> Location ID: </td> 
+    <td> 
+        <select name="location_id" required>
+            <optgroup label="Select Location">
+                <% for (var i = 0; i < locations.length; i++) { %>
+                    <option value=<%= locations[i].location_id %>> 
+                    <%= locations[i].address %> </option>
+                <% } %>
+            </optgroup>
+        </select>
+    </td>
 </table>
 <button type="submit">Save</button>
 </form>

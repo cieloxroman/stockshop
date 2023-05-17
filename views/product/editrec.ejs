@@ -1,24 +1,36 @@
-<h1> Edit Product</h1>
+<h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%"> Edit Product</h1>
 <form action="/product/save" method="post">
 <input type="hidden" name="product_id" value="<%= onerec.product_id %>" >
 <table>
 <tr> <td> Product Name: </td> <td> <input type="text" name="productname" value="<%= onerec.productname %>" required> </td> </tr>
 <tr> <td> Image: </td> <td> <input type="text" name="prodimage" value="<%= onerec.prodimage %>" required> </td> </tr>
 <tr> <td> Description: </td> <td> <textarea name="description" rows="10" cols="30"><%= onerec.description %></textarea> </td> </tr>
-<tr> <td> Supplier: </td> <td> <input type="number" name="supplier_id" value="<%= onerec.supplier_id %>" required> </td> </tr>
+<tr> <td> Supplier: </td> 
+    <td> <select name="supplier_id" required>
+        <% for (var i = 0; i < supplier.length; i++) { %>
+        <% if (supplier[i].supplier_id == onerec.supplier_id) { %>
+        <option selected value=<%= supplier[i].supplier_id %>>
+        <%= supplier[i].suppliername %></option>
+        <% } else { %>
+        <option value=<%= supplier[i].supplier_id %>> 
+        <%= supplier[i].suppliername %></option>
+        <% } }%>
+        </select>
+    </td>
+</tr>
 <tr> <td> Cost Per Ounce: </td> <td> <input type="number" step="any" name="cost_per_ounce" value="<%= onerec.cost_per_ounce %>" required> </td> </tr>
 <tr> <td> Total liters in storage: </td> <td> <input type="number" step="any" name="total_liters_in_storage" value="<%= onerec.total_liters_in_storage %>" required> </td> </tr>
 <tr> <td> Catagory: </td> <td> <select name="catagory" required>
 <option selected><%= onerec.catagory %></option>
 <option>Snacks</option>
 <option>Beverage</option>
-<option>Cleaning Products</option>
+<option>Household Essentials</option>
 <option>Skin Care</option>
 </select> </td> </tr>
 <tr> <td> Homepage: </td> <td> 
-    <% if (onerec.homepage) { %> <input type="checkbox" name="homepage" checked required> </td> </tr>
+    <% if (onerec.homepage) { %> <input type="checkbox" name="homepage" checked> </td> </tr>
     <% } else { %>
-        <input type="checkbox" name="homepage" required> </td> </tr>
+        <input type="checkbox" name="homepage"> </td> </tr>
     <%} %>
 </table>
 <button type="submit">Save</button>

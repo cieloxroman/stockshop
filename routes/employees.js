@@ -35,8 +35,16 @@ router.get('/:recordid/show', function(req, res, next) {
 // Route to show empty form to obtain input form end-user.
 // ==================================================
 router.get('/addrecord', function(req, res, next) {
-    res.render('employees/addrec');
-    });
+    let query = "SELECT location_id, address FROM locations"; 
+// execute query
+    db.query(query, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.render('error');
+        }
+        res.render('employees/addrec', {locations: result});
+        });
+});
 // ==================================================
 // Route to obtain user input and save in database.
 // ==================================================
