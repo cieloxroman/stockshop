@@ -155,3 +155,8 @@ ul {
   table{
     border:#800000 2px solid;
   }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }

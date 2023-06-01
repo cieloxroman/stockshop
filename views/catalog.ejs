@@ -1,0 +1,38 @@
+<table width="100%" border="1" style="border-color:white"><tr valign="TOP"><td width="80%">
+<% if (allrecs.length > 0) {%>
+    <% allrecs.forEach((recref, index) => { %>
+        <product>
+        <form action="/catalog/add" method="post" >
+        <input type="hidden" name="product_id" value=<%= recref.product_id %> > 
+        <table style="border:none"> 
+        <tr> <td><%= recref.suppliername %></td><td><%= recref.productname %></td></tr>
+        <tr> <td colspan="2"><img src="/images/<%= recref.prodimage %>" width="150px" height="150px"></td></tr>
+        <tr> <td>$<%= recref.cost_per_ounce %> per ounce</td> <td><%= recref.catagory %></td></tr>
+        <td><a href='/product/<%= recref.product_id %>/show'>Details</a></td>
+        </tr>
+        <tr><td colspan="2"> Desired Number Of Ounces: </td></tr>
+        <tr><td> <select name="qty" required>
+                <option selected disabled>12.7</option>
+                <option>33.8</option>
+                <option>50.7</option>
+                <option>101.4</option>
+                <option>152.2</option>
+                </select> </td> </tr>
+        <tr><td><button type="submit">Add to Cart</button></td></tr>
+        </table>
+        </form>
+        </product>
+    <% }); %>
+<% } %>
+<td width="20%" style="text-align:center; padding:5px">
+    <h2 style="font-size:20px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#800000"> Measurement Conversion Chart </h2>
+    <p style="font-size:20px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#800000"> <b>⇩⇩⇩⇩⇩⇩⇩⇩</b> </p>
+    <div style="border:#800000 3px solid">
+    <p style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009"> <b>12.7 Ounces  = 1 Pint</b> </p><br>
+    <p style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009"> <b>33.8 Ounces  = 1 Liter</b> </p><br>
+    <p style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009"> <b>50.7 Ounces  = 1.5 Liters</b> </p><br>
+    <p style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009"> <b>101.4 Ounces = 3 Liters</b> </p><br>
+    <p style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#513009"> <b>152.2 Ounces = 4.5 Liters</b> </p>
+    </div>
+    
+</tr></td></table>

@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var layouts=require('express-ejs-layouts');
 var dotenv = require('dotenv');
+const session = require ('express-session');
 
 //establishing connectivity
 dotenv.config();
@@ -42,8 +43,15 @@ var policiesRoute=require('./routes/policies');
 var searchRoute=require('./routes/search');
 var promotionRouter=require('./routes/promotion');
 var reportRouter = require("./routes/report");
+var catalogRouter = require('./routes/catalog.js');
 
 var app = express();
+
+app.use(session({secret: 'stockshopsecret'})); //instead of hardcoding the name you could use a token that would add extra security
+app.use(function(req,res,next){//taking the request session object so that we can reference the session variables
+res.locals.session = req.session;
+next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -74,6 +82,8 @@ app.use('/policies', policiesRoute);
 app.use('/search', searchRoute);
 app.use('/promotion', promotionRouter);
 app.use('/report', reportRouter);
+app.use('/catalog', catalogRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
