@@ -1,5 +1,12 @@
 var express = require('express');
 var router = express.Router();
+
+function adminonly(req,res,next){ 
+    if (!req.session.isadmin) 
+    {return res.render('customer/login', {message: "You Need Admin Privileges"});}
+    next();
+    }
+
 // ==================================================
 // Route to list all records. Display view to list all records
 // url: http://localhost:3028/product/
@@ -23,18 +30,26 @@ router.get('/:recordid/show', function(req, res, next) {
     let query = "SELECT product_id, productname, prodimage, description, supplier_id, cost_per_ounce, total_liters_in_storage, catagory, homepage FROM product WHERE product_id = " + req.params.recordid; 
     // execute query
     db.query(query, (err, result) => {
-    if (err) {
-    console.log(err);
-    res.render('error');
-    } else {
-    res.render('product/onerec', {onerec: result[0] });
-    } 
+        if (err) {
+            console.log(err);
+            res.render('error');
+        } else {
+            let query = "select  review_id, comments, rating from review where product_id ="+req.params.recordid;
+            db.query(query, (err, reviews) => {
+                if (err) {
+                    console.log(err);
+                    res.render('error');
+                }else{
+                   res.render('product/onerec', {onerec: result[0], reviews: reviews });
+                }
+            });
+        }
     });
-    });
+});
 // ==================================================
 // Route to show empty form to obtain input form end-user.
 // ==================================================
-router.get('/addrecord', function(req, res, next) {
+router.get('/addrecord', adminonly, function(req, res, next) {
     let query = "SELECT supplier_id, suppliername FROM supplier"; 
 // execute query
     db.query(query, (err, result) => {
@@ -69,7 +84,7 @@ router.post('/', function(req, res, next) {
 // ==================================================
 // Route to edit one specific record.
 // ==================================================
-router.get('/:recordid/edit', function(req, res, next) {
+router.get('/:recordid/edit', adminonly, function(req, res, next) {
     let query = "SELECT product_id, productname, prodimage, description, supplier_id, cost_per_ounce, total_liters_in_storage, catagory, homepage FROM product WHERE product_id = " + req.params.recordid; 
     // execute query
     db.query(query, (err, result) => {
@@ -92,7 +107,7 @@ router.get('/:recordid/edit', function(req, res, next) {
 // ==================================================
 // Route to save edited data in database.
 // ==================================================
-router.post('/save', function(req, res, next) {
+router.post('/save', adminonly, function(req, res, next) {
     let updatequery = "UPDATE product SET productname = ?, prodimage = ?, description = ?, supplier_id = ?, cost_per_ounce = ?, total_liters_in_storage = ?, catagory = ?, homepage = ? WHERE product_id = " + req.body.product_id; 
     var homepagecheck = 0;
     if(req.body.homepage){
@@ -113,7 +128,7 @@ router.post('/save', function(req, res, next) {
 // ==================================================
 // Route to delete one specific record.
 // ==================================================
-router.get('/:recordid/delete', function(req, res, next) {
+router.get('/:recordid/delete', adminonly, function(req, res, next) {
     let query = "DELETE FROM product WHERE product_id = " + req.params.recordid; 
     // execute query
     db.query(query, (err, result) => {

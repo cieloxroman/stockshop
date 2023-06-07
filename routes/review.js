@@ -37,17 +37,28 @@ router.get('/:recordid/show', function(req, res, next) {
 router.get('/addrecord', function(req, res, next) {
     res.render('review/addrec');
     });
+
+
+router.post('/subreview', function(req, res, next) {
+    if (typeof req.session.customer_id !== 'undefined' && req.session.customer_id ) {   
+        res.render('review/subreview', {prod_id: req.body.product_id});
+    }else{
+        res.redirect('/customer/login');
+    }
+});
+
+
 // ==================================================
 // Route to obtain user input and save in database.
 // ==================================================
 router.post('/', function(req, res, next) {
-    let insertquery = "INSERT INTO review (customer_id, product_id, reviewdate, comments, rating) VALUES (?, ?, ?, ?, ?)"; 
-    db.query(insertquery,[req.body.customer_id, req.body.product_id, req.body.reviewdate, req.body.comments, req.body.rating],(err, result) => {
+    let insertquery = "INSERT INTO review (customer_id, product_id, reviewdate, comments, rating) VALUES (?, ?, now(), ?, ?)"; 
+    db.query(insertquery,[req.body.customer_id, req.body.product_id, req.body.comments, req.body.rating],(err, result) => {
     if (err) {
     console.log(err);
     res.render('error');
     } else {
-    res.redirect('/review');
+    res.redirect('/');
     }
     });
 });

@@ -1,7 +1,7 @@
 <h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%"> Edit Product</h1>
 <form action="/product/save" method="post">
 <input type="hidden" name="product_id" value="<%= onerec.product_id %>" >
-<table>
+<table >
 <tr> <td> Product Name: </td> <td> <input type="text" name="productname" value="<%= onerec.productname %>" required> </td> </tr>
 <tr> <td> Image: </td> <td> <input type="text" name="prodimage" value="<%= onerec.prodimage %>" required> </td> </tr>
 <tr> <td> Description: </td> <td> <textarea name="description" rows="10" cols="30"><%= onerec.description %></textarea> </td> </tr>
@@ -33,5 +33,5 @@
         <input type="checkbox" name="homepage"> </td> </tr>
     <%} %>
 </table>
-<button type="submit">Save</button>
+<button class = "button1" type="submit">Save</button>
 </form>

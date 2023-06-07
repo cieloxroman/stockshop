@@ -1,9 +1,9 @@
-<h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%"> New Review Record</h1>
+<h1 style="font-size:45px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:white; font-style:italic; position: relative; left:5%"> Submit Review</h1>
 <form action="/review" method="post">
+    <input type="hidden" name="customer_id" required value="<%= session.customer_id %>"> 
+    <input type="hidden" name="product_id" required value="<%= prod_id %>"> 
 <table>
-<tr> <td> Customer ID: </td> <td> <input type="text" name="customer_id" required> </td> </tr>
-<tr> <td> Product ID: </td> <td> <input type="text" name="product_id" required> </td> </tr>
-<tr> <td> Review Date: </td> <td> <input type="date" name="reviewdate" required> </td> </tr>
+
 <tr> <td> Comments: </td> <td> <textarea name="comments" rows="10" cols="30" placeholder="comments"></textarea> </td> </tr>
 <tr> <td> Rating: </td> 
     <td> 

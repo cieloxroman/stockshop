@@ -2,8 +2,7 @@
 <% var totqty = 0 %>
 <% var lineitemcost = 0 %>
 <% if (cartitems != '0') {%>
-<p> Here products selected in your cart: </p>
-<table border=1>
+<h1 style="padding:10px; font-size:30px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#301d06; position:relative; left:5%">Current Items In Your Cart</h1><table style="position: relative; left:5%" border=1>
 <tr>
 <th>Supplier</th>
 <th>Product Name</th>
@@ -23,23 +22,23 @@
 <td><%= item.description %></td>
 <td><%= item.catagory %></td>
 <td>$<%= item.cost_per_ounce %></td>
-<% totqty = totqty + parseInt(qtys[index]) %>
-<% lineitemcost = item.cost_per_ounce * parseInt(qtys[index]) %>
-<td><%= qtys[index] %> ounces</td>
-<td>$<%= lineitemcost %> </td>
+<% totqty = totqty + parseFloat(qtys[index]) %>
+<% lineitemcost = item.cost_per_ounce * parseFloat(qtys[index]) %>
+<td><%= qtys[index] %> </td>
+<td><%= parseFloat(lineitemcost).toFixed(2) %> </td>
 <% totprice = totprice + lineitemcost %>
 <td>
 <form action="/catalog/remove" method="post" >
 <input type="hidden" name="product_id" value=<%= item.product_id %> >
-<button type="submit">Remove</button>
+<button class="button1" type="submit">Remove</button>
 </form>
 </td>
 </tr>
 <% }); %>
-<tr bgcolor="yellow" >
+<tr bgcolor="#FFE4C4" >
 <td colspan="6"><b>Totals</b></td>
-<td><%= totqty %> ounces</td>
-<td>$<%= totprice %></td>
+<td><%= parseFloat(totqty).toFixed(2) %> ounces</td>
+<td>$<%= parseFloat(totprice).toFixed(2) %></td>
 <td><button class='button1' onclick="window.location.href='/catalog/checkout'">Checkout</button></td>
 </tr>
 </table>

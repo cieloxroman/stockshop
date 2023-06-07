@@ -16,10 +16,10 @@
     <td><%= recref.startdate %></td>
     <td><%= recref.enddate %></td>
     <td><%= recref.discountrate %></td>
-    <td><a href='/promotion/<%= recref.promotion_id %>/show'> 
+    <td><a  class = "button1" href='/promotion/<%= recref.promotion_id %>/show'> 
     Details</a></td>
-    <td><a href='/promotion/<%= recref.promotion_id %>/edit'>Edit</a></td>
-    <td><a href='/promotion/<%= recref.promotion_id %>/delete' 
+    <td><a  class = "button1"  href='/promotion/<%= recref.promotion_id %>/edit'>Edit</a></td>
+    <td><a  class = "button1" href='/promotion/<%= recref.promotion_id %>/delete' 
     onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
     </tr>
     <% }); %>
@@ -27,4 +27,4 @@
     <% } else { %>
     <p>Not Records Available</p>
     <% } %>
-    <p> <a href='/promotion/addrecord'>Add New</a> </p>
+    <p> <a  class = "button1" href='/promotion/addrecord'>Add New</a> </p>

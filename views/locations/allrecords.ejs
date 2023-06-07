@@ -10,10 +10,9 @@
     <tr>
     <td><%= recref.address %></td>
     <td><%= recref.location_id %></td>
-    <td><a href='/locations/<%= recref.location_id %>/show'> 
-    Details</a></td>
-    <td><a href='/locations/<%= recref.location_id %>/edit'>Edit</a></td>
-    <td><a href='/locations/<%= recref.location_id %>/delete' 
+    <td><a  class = "button1"  href='/locations/<%= recref.location_id %>/show'> Details</a></td>
+    <td><a  class = "button1" href='/locations/<%= recref.location_id %>/edit'>Edit</a></td>
+    <td><a  class = "button1" href='/locations/<%= recref.location_id %>/delete' 
     onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
     </tr>
     <% }); %>
@@ -21,4 +20,4 @@
     <% } else { %>
     <p>Not Records Available</p>
     <% } %>
-    <p> <a href='/locations/addrecord'>Add New</a> </p>
+    <p> <a  class = "button1" href='/locations/addrecord'>Add New</a> </p>
